@@ -1,0 +1,28 @@
+baseURL = "https://www.xtrasimplicity.com/"
+languageCode = "en-us"
+title = "XtraSimplicity"
+theme = 'hyde-hyde'
+
+[params]
+    author = "XtraSimplicity"
+    title = "Title"
+    description = "Developer. Linux enthusiast. Cat lover."
+    dateformat = "Jan 2, 2006"
+    highlightjs = true
+    highlightjsstyle = "github"
+
+[params.social]
+    github = "xtrasimplicity"
+    linkedin = "xsandreww"
+    stackoverflow = "xtrasimplicity"
+
+[[menu.main]]
+    name = "Posts"
+    weight = 100
+    identifier = "posts"
+    url = "/posts/"
+[[menu.main]]
+    name = "About"
+    identifier = "about"
+    weight = 200
+    url = "/about/"
