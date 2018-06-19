@@ -22,7 +22,7 @@ useradd -m kioskuser
 
 I then needed to configure Getty to automatically login as this user, on tty1. On Alpine Linux, you can do this by updating `/etc/inittab` and changing the tty's `respawn` entry, so that it looks like this:
   ```
-  tty1::respawn::/bin/login -f kioskuser tty1
+  tty1::respawn::/bin/login -f kioskuser
   ```
 If you're using Alpine Linux, don't forget to commit your changes to disk:
 ```bash
