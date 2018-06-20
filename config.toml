@@ -10,6 +10,7 @@ theme = 'hyde-hyde'
     dateformat = "Jan 2, 2006"
     highlightjs = true
     highlightjsstyle = "github"
+    disqusShortname = "xtrasimplicity"
 
 [params.social]
     github = "xtrasimplicity"
