@@ -28,6 +28,18 @@ If you're using Alpine Linux, don't forget to commit your changes to disk:
 ```bash
 lbu_commit -d
 ```
+On Raspbian, create a file at `/etc/systemd/system/getty@tty1.service.d/override.conf` with the following content:
+  ```
+  [Service]
+  ExecStart=
+  ExecStart=-/sbin/agetty -a kioskuser %I $TERM
+  ```
+
+If you're using Raspbian, don't forget to reload the daemon and enable the `getty@tty1` service, with:
+  ```bash
+  sudo systemctl daemon-reload
+  sudo systemctl enable getty@tty1.service  
+  ```
 
 Next time you reboot your computer (or terminate your session, if using `tty1`), you should automatically be logged in as `kioskuser`. Next, we need to configure Xorg to automatically run the browser when a new X session is initiated.
 
@@ -36,5 +48,11 @@ You can do this by logging in as the unprivileged kiosk user that we recently cr
 #!/bin/sh
 exec chromium-browser --kiosk http://myselfserviceurl.com/path
 ```
+
+You may also need to update your `~/.bash_profile` file, like this:
+  ```bash
+  #!/bin/bash
+  [[ -z $DISPLAY ]] && startx # Start X server if DISPLAY env var is set. 
+  ```
 
 Once you've saved this file, login to a new session on tty1 as the kiosk user and you should hopefully be greeted with a full-screen Chrome browser with `http://myselfserviceurl.com/path` loaded! If the browser crashes, or if you restart the Raspberry Pi, Chrome will automatically start up again and load the desired URL. Awesome! :)
