@@ -26,29 +26,32 @@ useradd -m kioskuser
 
 You'll then need to configure Getty to automatically login as this user, on tty1. The process for doing this will differ depending on whether you use Systemd or SysVinit.
 
-With SysVinit:
+**With SysVinit**:
 
-  1) Update the `/etc/inittab` file and change the tty's `respawn` config, so that it looks like this:
-  ```
-  tty1::respawn::/bin/login -f kioskuser
-  ```
-  2) If you're using Alpine Linux, don't forget to commit your changes to disk:
+  1. Update the `/etc/inittab` file and change the tty's `respawn` config, so that it looks like this:
+
+    ```
+    tty1::respawn::/bin/login -f kioskuser
+    ```
+  2. If you're using Alpine Linux, don't forget to commit your changes to disk:
   ```bash
   lbu_commit -d
   ```
 
-With Systemd: 
-  1) Create a file at `/etc/systemd/system/getty@tty1.service.d/override.conf` with the following content:
-  ```
-  [Service]
-  ExecStart=
-  ExecStart=-/sbin/agetty -a kioskuser %I $TERM
-  ```
-  2) Reload the daemon and enable the `getty@tty1` service, with:
-  ```bash
-  sudo systemctl daemon-reload
-  sudo systemctl enable getty@tty1.service
-  ```
+**With Systemd**:
+
+  1. Create a file at `/etc/systemd/system/getty@tty1.service.d/override.conf` with the following content:
+  
+    ```
+    [Service]
+    ExecStart=
+    ExecStart=-/sbin/agetty -a kioskuser %I $TERM
+    ```
+  2. Reload the daemon and enable the `getty@tty1` service, with:
+    ```bash
+    sudo systemctl daemon-reload
+    sudo systemctl enable getty@tty1.service
+    ```
 
 Next time you reboot your computer (or terminate your session, if using `tty1`), you should automatically be logged in as `kioskuser`. 
 
