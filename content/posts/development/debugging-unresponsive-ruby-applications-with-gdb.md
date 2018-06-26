@@ -53,9 +53,10 @@ Why is this important? When we debug our Ruby application using gdb, any command
 Now that we've got that out of the way, let's move on to the fun parts!
 
 ### Dumping a backtrace to the application's stdout stream.
-In your gdb console, type `call rb_backtrace()` and press enter. If you switch to your Ruby application, you should see a stacktrace printed to your application's stdout stream.
+In your gdb console, type `call rb_backtrace()` and press enter. If you switch to your Ruby application, you should see a backtrace printed to your application's stdout stream.
 ```shell
 	from my-ruby-script.rb:7:in `<main>'
 	from my-ruby-script.rb:3:in `perform_some_cool_function'
 	from my-ruby-script.rb:3:in `sleep'
 ```
+Using this backtrace, we can see that the application has "frozen" when running `sleep`, and that sleep was called from within `perform_some_cool_function`.
