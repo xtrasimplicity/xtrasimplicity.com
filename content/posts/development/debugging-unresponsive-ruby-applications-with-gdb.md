@@ -1,5 +1,5 @@
 ---
-title: "Debugging unresponsive Ruby Applications With gdb"
+title: "Debugging unresponsive Ruby Applications with gdb"
 date: 2018-06-22T07:56:47+10:00
 categories: ['Linux', 'Ruby']
 tags: ['ruby', 'gdb', 'debugging']
@@ -48,9 +48,11 @@ Once gdb has started up, you should be sitting at an interactive console. Type `
 
 Before we continue, it is worth reviewing what we know about Ruby MRI/YARV/KRI - namely, that it runs on a Virtual Machine written in C. As it runs on a VM, many (if not all?) of the Ruby methods that we know and love are actually defined using C.
 
-Why is this important? When we debug our Ruby application using gdb, any commands that we run are executed against the __VM__ rather than our Ruby application itself - as a result, we need to call the equivalent C methods. A (very long) list of available methods can be viewed by typing `call rb_` and pressing tab twice, within gdb.
+Why is this important? When we debug our Ruby application using gdb, any commands that we run are, from my understanding, executed against the __VM__ rather than our Ruby application itself* - as a result, we need to call the equivalent C methods. A (very long) list of available methods can be viewed by typing `call rb_` and pressing tab twice, within gdb.
 
 Now that we've got that out of the way, let's move on to the fun parts!
+
+<em>\* Any corrections here would be greatly appreciated.</em>
 
 ### Dumping a backtrace to the application's stdout stream.
 In your gdb console, type `call rb_backtrace()` and press enter. If you switch to your Ruby application, you should see a backtrace printed to your application's stdout stream.
