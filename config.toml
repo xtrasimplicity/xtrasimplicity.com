@@ -2,6 +2,8 @@ baseURL = "/"
 languageCode = "en-us"
 title = "XtraSimplicity"
 theme = 'hyde-hyde'
+DisqusShortname = 'xtrasimplicity'
+googleAnalytics = 'UA-121904776-1'
 
 [params]
     author = "XtraSimplicity"
@@ -10,7 +12,6 @@ theme = 'hyde-hyde'
     dateformat = "Jan 2, 2006"
     highlightjs = true
     highlightjsstyle = "github"
-    disqusShortname = "xtrasimplicity"
 
 [params.social]
     github = "xtrasimplicity"
