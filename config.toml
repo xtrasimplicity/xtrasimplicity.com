@@ -16,7 +16,7 @@ googleAnalytics = 'UA-121904776-1'
 [params.social]
     github = "xtrasimplicity"
     linkedin = "xsandreww"
-    stackoverflow = "xtrasimplicity"
+    stackoverflow = "2737435"
 
 [[menu.main]]
     name = "Posts"
