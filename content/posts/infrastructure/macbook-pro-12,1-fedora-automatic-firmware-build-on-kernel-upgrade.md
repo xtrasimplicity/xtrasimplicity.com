@@ -10,6 +10,8 @@ To get around this, I like to use the following script to automatically rebuild 
 
 Hint: Make sure to set the following script as executable (i.e. `chmod o+x /etc/kernel/postinst.d/install-facetimehd.sh`).
 
+Note: This makes use of [Patjak's reverse-engineered Broadcom 1570 drivers](https://github.com/patjak/bcwc_pcie), which he has generously published on Git.
+
 ```bash
 # /etc/kernel/postinst.d/install-facetimehd.sh
 #!/bin/sh
