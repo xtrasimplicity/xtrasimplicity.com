@@ -18,3 +18,8 @@ $(echo docker ps -aq) | while read -r line; do docker rm "${line}"; done
 ```bash
 docker system prune -a -f
 ```
+
+## Fix DNS issues on some Ubuntu 18.04 hosts
+Problem: https://github.com/docker/libnetwork/issues/2187#issuecomment-403372190_
+
+Solution (on the host): `ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf`
