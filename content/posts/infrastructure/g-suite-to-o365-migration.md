@@ -7,7 +7,7 @@ draft: true
 ### Background
 Assumptions:
 
-1) Have on-prem AD FS. Do NOT want to migrate to Azure AD FS.
+1) Have on-premise AD, and do not want to move to Azure AD as primary.
 2) Want Exchange online.
 3) AD source of all truth.
 4) No existing Exchange server.
@@ -15,12 +15,37 @@ Assumptions:
 6) Don't want to buy licenses for users that are not ready to be merged.
 
 ### Account creation
-Powershell workflow: 
-  - for each user in Pilot OU
-    - set targetAddress (username@gmail.mycorp.com)
-    - set proxyAddresses
-      - SMTP:username@mycorp.com
-      - smtp:username@o365.mycorp.com
+#### Assumptions
+- The user's *primary* email address is `username@domain.com`.
+- We have the following domains listed in O365:
+  - `domain.com`
+  - `o365.domain.com`
+- We have the following domains listed in our GSuite environment:
+  - `domain.com` (primary)
+  - `gsuite.domain.com` (alias)
+
+#### Steps
+- Add User to O365, and assign to the correct groups.
+- Once user is in Azure AD
+  - Remove the user from the GAL, if present
+    ```powershell
+    Remove-MailContact -Identity 'username@domain.com'
+    ```
+  - Set proxyAddresses property in AAD
+    ```powershell
+    $user = ... # [Microsoft.ActiveDirectory.Management.ADUser]
+    $addresses = @("SMTP:username@domain.com", "smtp:username@o365.domain.com")
+    $user.proxyAddresses = $addresses;
+
+    Set-ADUser -Instance $user
+    ```
+  - Configure O365 to GMail forwarding in AAD
+    ```powershell
+    Set-Mailbox -Identity 'username@domain.com' -DeliverToMailboxAndForward $true -ForwardingSmtpAddress 'username@gsuite.domain.com'
+    ```
+- Start migration from MS Exchange Admin Center
+  - Choose 'G Suite to O365' migration option.
+  - Migration process will configure forwarders to forward emails from Google to O365.
 
 References:
 
