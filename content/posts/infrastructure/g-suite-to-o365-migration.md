@@ -13,6 +13,7 @@ Assumptions:
 4) No existing Exchange server.
 5) Migrating from G Suite.
 6) Don't want to buy licenses for users that are not ready to be merged.
+7) Want to perform a gradual/staged migration.
 
 ### Account creation
 #### Assumptions
