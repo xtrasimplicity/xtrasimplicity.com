@@ -96,7 +96,8 @@ data = [client_public_key, request.location, request.method, request.body].join(
 expected_signature = OpenSSL::HMAC.hexdigest(digest, client_secret_key, data)
 ```
 
-Once we've done this, we can simply compare the two signatures - the one we expected to have been generated, given the request method, API entrypoint, body and API client secret, and the one supplied by the API client. If these signatures do not match, or if the public key provided is invalid (or missing completely), we can assume that:
+Once we've done this, we can simply compare the two signatures - the one we expected to have been generated (given the request method, API entrypoint, body and API client secret), and the one supplied by the API client. If these signatures do not match, or if the public key provided is invalid (or missing completely), we can assume that:
+
 1. The request has been manipulated in-transit, or
 2. The signature has not been generated in the same way on both the client and server, or
 3. There is a configuration issue on either the API client or server side.
