@@ -12,6 +12,8 @@ googleAnalytics = 'UA-121904776-1'
     dateformat = "Jan 2, 2006"
     highlightjs = true
     highlightjsstyle = "github"
+    copyright = 'XtraSimplicity'
+    since = '2018'
 
 [params.social]
     github = "xtrasimplicity"
