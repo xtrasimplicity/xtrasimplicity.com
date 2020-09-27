@@ -8,6 +8,10 @@ categories: ['Windows', 'Infrastructure']
 
 The following powershell script can be used to automatically generate a self-signed SSL certificate, and configure WinRM to accept connections over HTTPS.
 
+**Tip:** If using Windows Admin Center, you'll need to import this certificate into the Trusted Root Certification Store on each of your Gateway servers, before you can connect to them.
+
+If you have an internal CA, you might like to use it to generate a trusted certificate with the _[Request-Certificate](https://www.powershellgallery.com/packages/Request-Certificate/1.5.0)_ powershell module, and substitute its thumbprint into the `winrm create` command below.
+
 ```powershell
 $hostname = $env:computername
 $isRunningService = (Get-Service winrm).Status -eq "Running"
