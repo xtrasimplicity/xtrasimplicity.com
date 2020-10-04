@@ -1,7 +1,7 @@
 ---
 title: "MS AD DS - CVE-2020-1472 Remediation Automation"
 date: 2020-10-04T18:32:08+11:00
-draft: true
+draft: false
 tags: ['windows', 'powershell', 'CVE-2020-1472', 'ZeroLogon', 'AD DS', 'Active Directory']
 categories: ['Windows', 'Infrastructure']
 ---
