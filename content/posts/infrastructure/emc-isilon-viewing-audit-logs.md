@@ -1,8 +1,12 @@
 ---
-title: "Emc Isilon Viewing Audit Logs"
+title: "EMC Isilon Viewing Audit Logs"
 date: 2018-11-27T10:22:29+11:00
-draft: true
+draft: false
+tags: ['EMC', 'Isilon', 'Auditing', 'Logs']
+categories: ['Infrastructure']
 ---
+To view audit logs on an EMC Isilon storage cluster, you can use the following command.
+
 
 ``shell
 isi_audit_viewer -h
