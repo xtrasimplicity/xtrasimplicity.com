@@ -4,6 +4,7 @@ title = "XtraSimplicity"
 theme = 'hyde-hyde'
 DisqusShortname = 'xtrasimplicity'
 googleAnalytics = 'UA-121904776-1'
+paginate = 150
 
 [params]
     author = "XtraSimplicity"
