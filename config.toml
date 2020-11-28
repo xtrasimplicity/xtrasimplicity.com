@@ -21,12 +21,19 @@ googleAnalytics = 'UA-121904776-1'
     stackoverflow = "2737435"
 
 [[menu.main]]
-    name = "Posts"
+    name = "Home"
     weight = 100
+    identifier = "home"
+    url = "/"
+
+[[menu.main]]
+    name = "Posts"
+    weight = 200
     identifier = "posts"
     url = "/posts/"
+
 [[menu.main]]
     name = "About"
     identifier = "about"
-    weight = 200
+    weight = 300
     url = "/about"
