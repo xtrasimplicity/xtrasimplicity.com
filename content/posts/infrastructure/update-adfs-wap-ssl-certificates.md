@@ -1,6 +1,6 @@
 ---
 title: "Updating ADFS and ADFS WAP SSL certificates"
-date: 2022-12-1T09:30:00+10:00
+date: 2022-12-01T09:30:00+10:00
 draft: false
 tags: ['windows', 'adfs', 'saml']
 categories: ['Windows', 'Infrastructure']
